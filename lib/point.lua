@@ -33,6 +33,12 @@ local function createXandYNonMut(arg)
     return x1,y1,x2,y2
 end
 
+function point.new(...)
+    local x,y = createXAndY(arg)
+    local thisPoint = {x=x, y=y}
+    return setmetatable(thisPoint, point_mt)
+end
+
 function point.newFromAng(angle)
     local angle = (math.pi * angle) / 180
     return point.newFromAngRad(angle)
@@ -43,12 +49,6 @@ function point.newFromAngRad(angle)
     return point.new(thisPoint)
 end
 
-
-function point.new(...)
-    local x,y = createXAndY(arg)
-    local thisPoint = {x=x, y=y}
-    return setmetatable(thisPoint, point_mt)
-end
 
 function point.newFromAddition(...)
     local x1,y1,x2,y2 = createXandYNonMut(arg)
@@ -106,6 +106,7 @@ end
 function point:normalize()
     local tempPoint = self:normalized()
     self.x, self.y = tempPoint.x, tempPoint.y
+    return self
 end
 
 function point:normalized()
@@ -119,12 +120,6 @@ end
 
 function point:rounded()
     return self:setPosition(math.round(self.x), math.round(self.y))
-end
-
-function point:distance(...)
-    local x,y = createXAndY(arg)
-    local tempPoint = point.new(x, y)
-    return tempPoint:length()
 end
 
 function point:distanceTo(...)
