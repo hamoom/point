@@ -14,8 +14,8 @@ local normalizedX = obj.x/length
 local normalizedY	obj.y/length
 
 -- move object
-obj.x = obj.x + (speed * normalizedX)
-obj.y = obj.y + (speed * normalizedY)
+obj.x = obj.x + (speed*normalizedX)
+obj.y = obj.y + (speed*normalizedY)
 ```
 
 **With the point library.**
@@ -26,6 +26,8 @@ local speed = 5
 
 -- create a point table based on objects position
 local point = p.new(obj)
-obj.x, obj.y = point:normalize():multiply(speed):getPosition()
+obj.x, obj.y = point:normalize()
+					:multiply(speed)
+					:getPosition()
 ```
 
