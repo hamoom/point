@@ -31,3 +31,4 @@ obj.x, obj.y = point.new(obj)
 					:getPosition()
 ```
 
+## For examples check out the demo folder.  For full documentation look at the wiki.
