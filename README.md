@@ -24,7 +24,7 @@ obj.x = 85
 obj.y = 100
 local speed = 5
 
--- create a point table based on objects position
+-- move object
 obj.x, obj.y = point.new(obj)
 					:normalize()
 					:multiply(speed)
