@@ -10,8 +10,8 @@ obj.x = 85
 obj.y = 100
 local speed = 5
 local length = math.sqrt((obj.x*obj.x) + (obj.y*obj.y))
-local normalizedX = obj.x / length
-local normalizedY	obj.y / length
+local normalizedX = obj.x/length
+local normalizedY	obj.y/length
 
 -- move object
 obj.x = obj.x + (speed * normalizedX)
