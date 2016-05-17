@@ -25,7 +25,7 @@ obj.y = 100
 local speed = 5
 
 -- create a point table based on objects position
-obj.x, obj.y = p.new(obj):normalize()
+obj.x, obj.y = point.new(obj):normalize()
 					:multiply(speed)
 					:getPosition()
 ```
