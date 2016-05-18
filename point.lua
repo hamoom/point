@@ -1,6 +1,8 @@
 local point = {}
 local point_mt = { __index = point }
 
+local sin, cos, atan2, sqrt = math.sin, math.cos, math.atan2, math.sqrt
+
 local function createXAndY(arg)
     local x,y
     if arg.n == 1 then
@@ -45,7 +47,7 @@ function point.newFromAng(angle)
 end
 
 function point.newFromAngRad(angle)
-    local thisPoint = {x=math.cos(angle), y=math.sin(angle)}
+    local thisPoint = {x=cos(angle), y=sin(angle)}
     return point.new(thisPoint)
 end
 
@@ -100,7 +102,7 @@ function point:divide(...)
 end
 
 function point:length()
-    return math.sqrt((self.x*self.x) + (self.y*self.y))
+    return sqrt((self.x*self.x) + (self.y*self.y))
 end
 
 function point:normalize()
@@ -129,7 +131,7 @@ function point:distanceTo(...)
 end
 
 function point:angleRad()
-    return math.atan2(self.y, self.x)
+    return atan2(self.y, self.x)
 end
 
 function point:angle()
