@@ -6,12 +6,11 @@ Point is a 2d math library for Corona SDK or just plain ol' lua.  It allows us t
 **This is how we'd move an object along a vector without point library.**
 
 ```lua 
-obj.x = 85
-obj.y = 100
 local speed = 5
-local length = math.sqrt((obj.x*obj.x) + (obj.y*obj.y))
-local normalizedX = obj.x/length
-local normalizedY =	obj.y/length
+local angle = 90
+local angleRad = (math.pi * angle) / 180
+local normalizedX = math.cos(angleRad)
+local normalizedY =	math.sin(angleRad)
 
 -- move object
 obj.x = obj.x + (speed*normalizedX)
@@ -20,15 +19,11 @@ obj.y = obj.y + (speed*normalizedY)
 
 **With the point library.**
 ```lua
-obj.x = 85
-obj.y = 100
 local speed = 5
 
 -- move object
-obj.x, obj.y = point.new(obj)
-					:normalize()
-					:multiply(speed)
-					:getPosition()
+local vector = point.newFromAng(90):multiply(speed)
+obj.x, obj.y = point.newFromAddition(obj, vector):getPosition()
 ```
 
 ## For examples check out the demo folder.  For full documentation look at the wiki.
