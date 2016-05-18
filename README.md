@@ -20,6 +20,7 @@ obj.y = obj.y + (speed*normalizedY)
 **With the point library.**
 ```lua
 local speed = 5
+local angle = 90
 
 -- move object
 local vector = point.newFromAng(90):multiply(speed)
