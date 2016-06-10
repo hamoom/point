@@ -11,21 +11,21 @@ local rectPoint = point.new(rect)
 local speed = 2
 
 local function touch(event)
-	if event.phase == "began" then
-		touchPoint = point.new(event)
-	end
+    if event.phase == "began" then
+        touchPoint = point.new(event)
+    end
 end
 
 local function update()
-	if touchPoint and rectPoint:distanceTo(touchPoint) > 1 then
+    if touchPoint and rectPoint:distanceTo(touchPoint) > 1 then
 
-		local vector = point.newFromSubtraction(touchPoint, rectPoint)
-						:normalize()
-						:multiply(speed)
+        local vector = point.newFromSubtraction(touchPoint, rectPoint)
+                        :normalize()
+                        :multiply(speed)
 
-		rect.x, rect.y = rectPoint:add(vector):getPosition()
+        rect.x, rect.y = rectPoint:add(vector):getPosition()
 
-	end
+    end
 end
 
 

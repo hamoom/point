@@ -18,39 +18,39 @@ local curAngle, offsetAngle = nil, nil
 
 
 local function sign(num)
-	return num < 0 and -1 or 1
+    return num < 0 and -1 or 1
 end
 
 local function update()
-	if target.isVisible then
-		if not curAngle then
-			curAngle = point.newFromSubtraction(target, missile):angle()
-		end
-		offsetAngle = point.newFromSubtraction(target, missile):angle()
+    if target.isVisible then
+        if not curAngle then
+            curAngle = point.newFromSubtraction(target, missile):angle()
+        end
+        offsetAngle = point.newFromSubtraction(target, missile):angle()
 
-		local differenceAngle = point.shortestAngleBetween(curAngle, offsetAngle)
-		local amtToRotate = rotationSpeed 
+        local differenceAngle = point.shortestAngleBetween(curAngle, offsetAngle)
+        local amtToRotate = rotationSpeed 
 
-		if math.abs(differenceAngle) < amtToRotate then
-		    amtToRotate = math.abs(differenceAngle)
-		end
+        if math.abs(differenceAngle) < amtToRotate then
+            amtToRotate = math.abs(differenceAngle)
+        end
 
-		amtToRotate = -sign(differenceAngle) * amtToRotate
-		curAngle = curAngle + amtToRotate
+        amtToRotate = -sign(differenceAngle) * amtToRotate
+        curAngle = curAngle + amtToRotate
 
-		local vector = point.newFromAng(curAngle):multiply(speed)	
-		missile.x, missile.y = point.newFromAddition(missile, vector):getPosition()
-		missile.rotation = point.new(vector):angle()
-	end
+        local vector = point.newFromAng(curAngle):multiply(speed)   
+        missile.x, missile.y = point.newFromAddition(missile, vector):getPosition()
+        missile.rotation = point.new(vector):angle()
+    end
 end
 
 local function touch(event)
-	if event.phase == "began" then
-		target.isVisible = true
-		target.x, target.y = event.x, event.y
-	elseif event.phase == "moved" then
-		target.x, target.y = event.x, event.y
-	end
+    if event.phase == "began" then
+        target.isVisible = true
+        target.x, target.y = event.x, event.y
+    elseif event.phase == "moved" then
+        target.x, target.y = event.x, event.y
+    end
 end
 
 Runtime:addEventListener("touch", touch)

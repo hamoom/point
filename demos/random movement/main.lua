@@ -15,19 +15,19 @@ wayPointRect:setFillColor(0,1,0)
 
 
 local function update()
-	-- if we're far away from waypoint go to it
-	if rectPoint:distanceTo(wayPoint) > 5 then
-		local vector = point.newFromSubtraction(wayPoint, rectPoint)
-						:normalize()
-						:multiply(speed)
+    -- if we're far away from waypoint go to it
+    if rectPoint:distanceTo(wayPoint) > 5 then
+        local vector = point.newFromSubtraction(wayPoint, rectPoint)
+                        :normalize()
+                        :multiply(speed)
 
-		rect.x, rect.y = rectPoint:add(vector):getPosition()
+        rect.x, rect.y = rectPoint:add(vector):getPosition()
 
-	-- otherwise we reset our waypoint
-	else 
-		wayPoint:setPosition(math.random(0, display.contentWidth), math.random(0, display.contentHeight))
-		wayPointRect.x, wayPointRect.y = wayPoint:getPosition()
-	end
+    -- otherwise we reset our waypoint
+    else 
+        wayPoint:setPosition(math.random(0, display.contentWidth), math.random(0, display.contentHeight))
+        wayPointRect.x, wayPointRect.y = wayPoint:getPosition()
+    end
 end
 
 Runtime:addEventListener("enterFrame", update)
