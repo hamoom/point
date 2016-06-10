@@ -9,12 +9,12 @@ rect:setFillColor(1,0,0)
 local rectPoint = point.new(rect)
 
 local function update()
-	angle = angle + rotationSpeed
-	
-	local pointFromAngle = point.newFromAng(angle)
-								:multiply(radius)
+    angle = angle + rotationSpeed
+    
+    local pointFromAngle = point.newFromAng(angle)
+                                :multiply(radius)
 
-	rect.x, rect.y = point.newFromAddition(rectPoint, pointFromAngle):getPosition()
+    rect.x, rect.y = point.newFromAddition(rectPoint, pointFromAngle):getPosition()
 end
 
 Runtime:addEventListener("enterFrame", update)
