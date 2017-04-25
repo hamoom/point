@@ -10,7 +10,7 @@ local speed = 5
 local angle = 90
 local angleRad = (math.pi * angle) / 180
 local normalizedX = math.cos(angleRad)
-local normalizedY =	math.sin(angleRad)
+local normalizedY = math.sin(angleRad)
 
 -- move object
 obj.x = obj.x + (speed*normalizedX)
